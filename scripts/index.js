@@ -1,8 +1,13 @@
 const cardTemplate = document.querySelector("#card-template").content;
 const cardList = document.querySelector(".places__list");
 
-/*Создания карточек*/
-function createCard(element) {
+/*Функция удаления карточки*/
+function handleCardDelete(cardElement) {
+  cardElement.remove();
+}
+
+/*Функция создания карточки*/
+function createCard(cardData, deleteCardCallback) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
   if (!cardElement) {
@@ -19,26 +24,20 @@ function createCard(element) {
     return null;
   }
 
-  cardImage.src = element.link;
-  cardImage.alt = `Пейзажи разных регионов России: ${element.name}`;
-  cardTitle.textContent = element.name;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardTitle.textContent = cardData.name;
+
+  deleteButton.addEventListener("click", () => {
+    deleteCardCallback(cardElement);
+  });
 
   return cardElement;
 }
 
-/*Удаления карточек*/
-cardList.addEventListener("click", (event) => {
-  if (event.target.classList.contains("card__delete-button")) {
-    event.target.closest(".card").remove();
-  }
-});
-
-/*Добавление начальных карточек*/
-initialCards.forEach((element) => {
-  const cardElement = createCard(element, () => {
-    cardElement.remove();
-  });
-
+/*Добавляем начальные карточки*/
+initialCards.forEach((cardData) => {
+  const cardElement = createCard(cardData, handleCardDelete);
   if (cardElement) {
     cardList.append(cardElement);
   }
