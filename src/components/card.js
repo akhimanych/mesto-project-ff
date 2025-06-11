@@ -55,7 +55,7 @@ function createCard(
   return cardElement;
 }
 
-  // Лайк
+// Лайк
 function likeCard(likeButton) {
   if (likeButton.classList.contains("card__like-button_is-active")) {
     likeButton.classList.remove("card__like-button_is-active");

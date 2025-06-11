@@ -33,15 +33,5 @@ function closePopupByOverlayOrButton(event) {
   }
 }
 
-// Инициализация: добавляем класс popup_is-animated всем попапам
-function initPopups() {
-  const popups = document.querySelectorAll(".popup");
-  popups.forEach((popup) => {
-    popup.classList.add("popup_is-animated");
-  });
-}
-
-// Инициализацию при загрузке DOM
-document.addEventListener("DOMContentLoaded", initPopups);
 
 export { openPopup, closePopup, closePopupByOverlayOrButton };

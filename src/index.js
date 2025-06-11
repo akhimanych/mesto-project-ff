@@ -94,6 +94,7 @@ function handleNewCardSubmit(evt) {
 }
 
 document.querySelectorAll(".popup").forEach((popup) => {
+  popup.classList.add("popup_is-animated");
   popup.addEventListener("click", closePopupByOverlayOrButton);
 });
 
