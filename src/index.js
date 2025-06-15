@@ -6,6 +6,8 @@ import {
   closePopup,
   closePopupByOverlayOrButton,
 } from "./components/modal";
+import{} from "./components/api";
+import{} from "./components/validation";
 
 // ========== DOM ==========
 const placesList = document.querySelector(".places__list");
