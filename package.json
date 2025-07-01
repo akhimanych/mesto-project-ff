@@ -36,6 +36,7 @@
     "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
-    "core-js": "^3.42.0"
+    "core-js": "^3.42.0",
+    "promise.prototype.finally": "^3.1.8"
   }
 }
