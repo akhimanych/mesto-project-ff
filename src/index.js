@@ -97,9 +97,6 @@ function handleProfileSubmit(evt) {
   const newName = nameInput.value;
   const newJob = jobInput.value;
 
-  profileTitle.textContent = newName;
-  profileDescription.textContent = newJob;
-
   const newProfile = {
     name: newName,
     about: newJob,
@@ -108,6 +105,11 @@ function handleProfileSubmit(evt) {
   updateUserInfo(newProfile)
     .then((updatedUser) => {
       console.log("Профиль успешно обновлён:", updatedUser);
+
+      profileDescription.textContent = newJob;
+      profileTitle.textContent = newName;
+
+      closePopup(popupEditProfile);
     })
     .catch((error) => {
       console.error("Ошибка при сохранении профиля:", error);
@@ -115,8 +117,6 @@ function handleProfileSubmit(evt) {
     .finally(() => {
       loading(evt.target, false);
     });
-
-  closePopup(popupEditProfile);
 }
 
 //Функция Создаёт новую карточку
@@ -163,11 +163,14 @@ document.querySelectorAll(".popup").forEach((popup) => {
 editButton?.addEventListener("click", () => {
   fillProfileForm();
   openPopup(popupEditProfile);
+  clearValidation(formEdit, validationConfig);
 });
 
 //Функция обработчик клика на кнопку добавления новой карточки ,
 addCardButton?.addEventListener("click", () => {
   openPopup(popupAddCard);
+  clearValidation(formNewCard, validationConfig);
+  formNewCard.reset();
 });
 
 formEdit.addEventListener("submit", handleProfileSubmit);

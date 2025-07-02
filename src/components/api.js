@@ -7,7 +7,7 @@ const configServer = {
 };
 
 // Функция обработки результата
-function getresult(res) {
+function getResult(res) {
   if (res.ok) {
     return res.json();
   }
@@ -18,14 +18,14 @@ function getresult(res) {
 const getUserData = () => {
   return fetch(`${configServer.baseUrl}/users/me`, {
     headers: configServer.headers,
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция запроса карт с сервера
 const getAllCards = () => {
   return fetch(`${configServer.baseUrl}/cards`, {
     headers: configServer.headers,
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция обновления информации
@@ -37,7 +37,7 @@ const updateUserInfo = (newProfile) => {
       name: newProfile.name,
       about: newProfile.about,
     }),
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция добавление новой карточки на сервер
@@ -49,7 +49,7 @@ const postNewCard = (newCard) => {
       name: newCard.name,
       link: newCard.link,
     }),
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция добавления лайка на сервер
@@ -58,7 +58,7 @@ const putLikeCard = (cardId) => {
     method: "PUT",
     headers: configServer.headers,
     body: JSON.stringify({}),
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция удаления карточки
@@ -66,7 +66,7 @@ const delLikeCard = (cardId) => {
   return fetch(`${configServer.baseUrl}/cards/likes/${cardId}`, {
     method: "DELETE",
     headers: configServer.headers,
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция удаления карточки по ID
@@ -74,7 +74,7 @@ const deleteCardId = (cardId) => {
   return fetch(`${configServer.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: configServer.headers,
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 //Функция изменения аватара
@@ -85,7 +85,7 @@ const updateUserAvatar = (avatar) => {
     body: JSON.stringify({
       avatar: avatar.avatar,
     }),
-  }).then((res) => getresult(res));
+  }).then((res) => getResult(res));
 };
 
 export {
