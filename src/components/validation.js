@@ -97,10 +97,10 @@ const clearValidation = (formElement, validationObj) => {
 
   inputList.forEach((inputElement) => {
     hideInputError(formElement, inputElement, validationObj);
+    inputElement.setCustomValidity("");
   });
 
-  buttonElement.disabled = false;
-  buttonElement.classList.remove(validationObj.inactiveButtonClass);
+  toggleButtonState(inputList, buttonElement, validationObj);
 };
 
 export { enableValidation, clearValidation };
