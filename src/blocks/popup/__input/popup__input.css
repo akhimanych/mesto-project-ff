@@ -37,4 +37,5 @@
 
 .popup__input-error_active {
   color: red;
+  opacity: 1;
 }
